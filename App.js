@@ -1,9 +1,9 @@
 import React from "react";
-import Menu from "./src/components/Menu";
+import MainNavigation from "./src/components/MainNavigation";
 
 export default function App() {
   return (
-    <Menu/>
+    <MainNavigation/>
   );
 }
 

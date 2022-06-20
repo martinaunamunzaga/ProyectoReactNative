@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import Menu from "../components/Menu";
+import Comments from "../screens/Comments";
 
 
 class MainNavigation extends Component{
@@ -42,11 +43,17 @@ class MainNavigation extends Component{
 
                     {
                         this.state.loggedIn ? 
-                    <Stack.Screen
+                        <Stack.Group >
+                             <Stack.Screen
                         name="Menu"
                         component={ Menu }
                         options={{headerShown: false}}
                     />
+                    <Stack.Screen 
+                    name="Comments"
+                    component={ Comments }
+                     />
+                        </Stack.Group>
                     :
                    <Stack.Group>
                    <Stack.Screen

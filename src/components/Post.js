@@ -27,14 +27,13 @@ class Post extends Component{
     }
 
     like(){
-        //Agregar el email del user logueado en el array
         db.collection('posts')
             .doc(this.props.dataPost.id)
             .update({
                 likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes + 1, //Se puede mejorar.
+                cantidadDeLikes: this.props.dataPost.data.likes.length,
                 myLike: true,
             }))
             .catch(error => console.log(error))
@@ -42,14 +41,13 @@ class Post extends Component{
     }
 
     unLike(){
-        //Agregar el email del user logueado en el array
         db.collection('posts')
             .doc(this.props.dataPost.id)
             .update({
                 likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes - 1, //Se puede mejorar
+                cantidadDeLikes: this.props.dataPost.data.likes.length, 
                 myLike: false
             }))
             .catch(error => console.log(error))

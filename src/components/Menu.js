@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
+import AddPost from "../screens/AddPost";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ class Menu extends Component {
                 <Tab.Navigator>
                     <Tab.Screen name="Home" component={ Home }/>
                     <Tab.Screen name="Profile" component={ Profile }/>
+                    <Tab.Screen name="Add Post" component={ AddPost }/>
                     
                 </Tab.Navigator>
             

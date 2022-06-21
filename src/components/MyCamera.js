@@ -32,11 +32,9 @@ class MyCamera extends Component{
     }
 
     sacarFoto(){
-        //usar un método de la cámara para sacar la foto.abs
         this.metodosDeCamara.takePictureAsync()
             .then(  photo => {
                 this.setState({
-                    //obtener la url temporal para guardarla en un estado.
                     url:photo.uri,
                     showCamera: false,
                 })

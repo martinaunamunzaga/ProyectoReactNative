@@ -24,7 +24,7 @@ class Menu extends Component {
             
                 <Tab.Navigator>
                     <Tab.Screen name="Home" component={ Home }/>
-                    <Tab.Screen name="Profile" component={ Profile }/>
+                    <Tab.Screen name="Profile" component={ Profile } initialParams={{logout:()=>this.props.route.params.logout()}}/>
                     <Tab.Screen name="Add Post" component={ AddPost }/>
                     
                 </Tab.Navigator>

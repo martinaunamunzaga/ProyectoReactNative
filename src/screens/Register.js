@@ -13,13 +13,7 @@ class Register extends Component {
         }
     }
 
-    register(mail, pass){
-        console.log(this.state)
-        auth.createUserWithEmailAndPassword(mail, pass)
-           .then(response => console.log(response))
-           .catch(error => console.log(error))
-    }
-
+    
     render(){
         console.log(this.state.email);
         console.log(this.state.password);
@@ -45,7 +39,7 @@ class Register extends Component {
                     secureTextEntry={true}
                     onChangeText={ text => this.setState({ password: text})}
                 />
-                <TouchableOpacity onPress={()=>this.register(this.state.email, this.state.password)}>
+                <TouchableOpacity onPress={()=>this.props.route.params.register(this.state.email, this.state.password)}>
                     <Text>Registrarme</Text>
                     
                 </TouchableOpacity>

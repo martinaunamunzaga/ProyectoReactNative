@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -9,6 +10,7 @@ import Login from "../screens/Login";
 import Register from "../screens/Register";
 import Menu from "../components/Menu";
 import Comments from "../screens/Comments";
+import { auth, db } from "../firebase/config";
 
 
 class MainNavigation extends Component{
@@ -16,26 +18,59 @@ class MainNavigation extends Component{
         super(props)
         this.state={
             loggedIn: false,
+            registerError: "",
         }
     }
 
     componentDidMount(){
+       auth.onAuthStateChanged(user => {
+        if(user){
+            this.setState({
+                loggedIn:true
+            })
+        }
+    })
 
     }
 
-    login(){
+    login(mail, pass){
+        auth.signInWithEmailAndPassword(mail,pass)
+        .then(response => this.setState({
+            loggedIn:true}))
+        .catch(error => console.log(error))
 
     }
 
-    register(){
+    register(mail, pass, userName){
+        auth.createUserWithEmailAndPassword(mail, pass)
+        .then( responseRegister => {
+            console.log(responseRegister);
+            db.collection('users').add({
+                email: mail,
+                userName: userName,
+                createdAt: Date.now(),
+            })
+            .then( responseUsers => this.setState({
+                loggedIn:true,
+            }))
+            .catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
+
 
     }
 
     logout(){
+        auth.signOut()
+            .then(response => this.setState({
+                loggedIn: false
+            }))
+            .catch( error => console.log(error))
 
     }
 
     render(){
+        console.log('En el render del menu: ' + this.state.registerError);
         return(
             <NavigationContainer>
                 
@@ -48,6 +83,7 @@ class MainNavigation extends Component{
                         name="Menu"
                         component={ Menu }
                         options={{headerShown: false}}
+                        initialParams = {{ logout: ()=> this.logout()}}
                     />
                     <Stack.Screen 
                     name="Comments"
@@ -60,11 +96,16 @@ class MainNavigation extends Component{
                         name="Login"
                         component={ Login }
                         options={{headerShown: false}}
+                        initialParams = {
+                            {   login: (mail, pass)=>this.login(mail, pass),
+                                
+                            }}
                     />
                     <Stack.Screen
                         name="Register"
-                        component={ Register }
                         options={{headerShown: false}}
+                        initialParams = {{register: (mail, pass, userName)=>this.register(mail, pass, userName)}}
+                        children = {(navigationProps)=><Register errores={this.state.registerError} {...navigationProps}/>}
                     />
                     </Stack.Group>
 

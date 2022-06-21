@@ -7,7 +7,7 @@ import {
     StyleSheet
 } from 'react-native';
 import {auth, db} from '../firebase/config';
-import Camera from '../components/Camera';
+import Camera from '../components/MyCamera';
 
 class AddPost extends Component{
     constructor(props){

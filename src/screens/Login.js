@@ -44,6 +44,7 @@ class Login extends Component {
                     <Text>Loguearme</Text>
                     
                 </TouchableOpacity>
+                <Text>El error es: {this.props.errores}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate("Register") }>
                     <Text>No tengo cuenta</Text>
                 </TouchableOpacity>

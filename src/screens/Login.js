@@ -40,7 +40,7 @@ class Login extends Component {
                     secureTextEntry={true}
                     onChangeText={ text => this.setState({ password: text})}
                 />
-                <TouchableOpacity onPress={()=>this.login(this.state.email, this.state.password)}>
+                <TouchableOpacity onPress={()=>this.props.route.params.login(this.state.email, this.state.password)}>
                     <Text>Loguearme</Text>
                     
                 </TouchableOpacity>

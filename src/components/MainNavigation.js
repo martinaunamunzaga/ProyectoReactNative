@@ -37,7 +37,8 @@ class MainNavigation extends Component{
     login(mail, pass){
         auth.signInWithEmailAndPassword(mail,pass)
         .then(response => this.setState({
-            loggedIn:true}))
+            loggedIn:true})) 
+
         .catch( error => {
                 console.log(error);
                 this.setState({

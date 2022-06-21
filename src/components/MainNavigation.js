@@ -55,8 +55,12 @@ class MainNavigation extends Component{
             }))
             .catch(error => console.log(error))
         })
-        .catch(error => console.log(error))
-
+        .catch( error => {
+            console.log(error);
+            this.setState({
+                 registerError: error.message
+            })
+        })      
 
     }
 

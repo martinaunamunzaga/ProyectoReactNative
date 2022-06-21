@@ -43,6 +43,7 @@ class Register extends Component {
                     <Text>Registrarme</Text>
                     
                 </TouchableOpacity>
+        <Text>El error es: {this.props.errores}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate("Login")}>
                     <Text>Ya tengo cuenta </Text>
                 </TouchableOpacity>

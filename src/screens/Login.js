@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     title:{
         marginBottom:20,
         fontSize:55,
-        fontWeight:500
+        fontWeight:500,
+        paddingLeft:260,
     },
     field:{
         borderColor: '#dcdcdc',

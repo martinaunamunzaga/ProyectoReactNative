@@ -40,12 +40,12 @@ class Register extends Component {
                     onChangeText={ text => this.setState({ password: text})}
                 />
                 <TouchableOpacity onPress={()=>this.props.route.params.register(this.state.email, this.state.password)}>
-                    <Text>Registrarme</Text>
+                    <Text style={styles.subtitulos}>Registrarme</Text>
                     
                 </TouchableOpacity>
-        <Text>El error es: {this.props.errores}</Text>
+        <Text style={styles.subtitulos}>El error es: {this.props.errores}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate("Login")}>
-                    <Text>Ya tengo cuenta </Text>
+                    <Text style={styles.subtitulos}>Ya tengo cuenta </Text>
                 </TouchableOpacity>
             </View>
         )
@@ -55,19 +55,29 @@ class Register extends Component {
 const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor:'#C13584',
+        height:730
     },
     title:{
-        marginBottom:20
+        marginBottom:20,
+        fontSize:55,
+        fontWeight:500,
+        paddingLeft:250
     },
     field:{
         borderColor: '#dcdcdc',
         borderWidth: 1,
         borderRadius: 2,
         padding:3,
-        marginBottom:8
-
-    }
+        marginBottom:8,
+        fontWeight:500,
+    },
+    subtitulos:{
+        fontWeight:400,
+        fontSize:25,
+        padding:10,
+    },
 })
 
 export default Register;

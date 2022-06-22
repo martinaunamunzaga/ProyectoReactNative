@@ -55,14 +55,14 @@ class Comments extends Component{
         // console.log(this.props);
         return(
                 <View>
-                    <Text> Comentarios</Text>
+                    <Text style={styles.title}> Comentarios</Text>
                     {/* Renderizar la lista de comentarios del posteo */}
                     {this.state.comments.length===0?
-                    <Text>Aún no hay comentarios</Text>:null}
+                    <Text style={styles.subtitulos} >Aún no hay comentarios</Text>:null}
                     <FlatList 
                         data={this.state.comments}
                         keyExtractor={ post => post.createdAt}
-        renderItem = { ({item}) => <Text>{item.owner}: {item.text}</Text> }
+        renderItem = { ({item}) => <Text style={styles.subtitulos}>{item.owner}: {item.text}</Text> }
                     />
                     {/* Un formulario para cargar un comentario */}
                     <TextInput 
@@ -84,27 +84,38 @@ class Comments extends Component{
 const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor:'#C13584',
+        height:730
     },
     title:{
-        marginBottom:20
+        marginBottom:20,
+        fontSize:55,
+        fontWeight:500,
+        paddingLeft:260,
     },
     field:{
         borderColor: '#dcdcdc',
         borderWidth: 1,
         borderRadius: 2,
         padding:3,
-        marginBottom:8
-
+        marginBottom:8,
     },
     button: {
         borderRadius: 2,
         padding:3,
         backgroundColor: 'green',
+        height:40,
     },
     buttonText:{
-        color: '#fff'
-    }
+        color: '#fff',
+        paddingTop:10,
+    },
+    subtitulos:{
+        fontWeight:400,
+        fontSize:25,
+        padding:10,
+    },
 })
 
 export default Comments;

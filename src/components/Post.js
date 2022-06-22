@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
+import reactDom from 'react-dom';
 
 class Post extends Component{
     constructor(props){
@@ -58,20 +59,20 @@ class Post extends Component{
         // console.log(this.props);
         return(
                 <View style={styles.separator}>
-                    <Text>Post de: {this.props.dataPost.data.owner}</Text>
-                    <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
-                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
+                    <Text style={styles.texto} >Post de: {this.props.dataPost.data.owner}</Text>
+                    <Text  style={styles.subtitulos} >Texto del Post: {this.props.dataPost.data.description}</Text>
+                     <Text style={styles.subtitulos}>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
                     {
                         this.state.myLike ?
                         <TouchableOpacity onPress={()=> this.unLike()}>
-                            <Text>Quitar Like</Text>
+                            <Text  style={styles.texto} >Quitar Like</Text>
                         </TouchableOpacity> :
                         <TouchableOpacity onPress={()=> this.like()}>
-                            <Text>Like</Text>
+                            <Text  style={styles.texto} >Like</Text>
                         </TouchableOpacity>                
                     }
                     <TouchableOpacity onPress={ () => this.props.navigation.navigate('Comments', { id: this.props.dataPost.id})} > 
-                        <Text>Ver comentarios</Text>
+                        <Text style={styles.subtitulos}>Ver comentarios</Text>
                     </TouchableOpacity>   
                     
                 </View>
@@ -83,10 +84,24 @@ class Post extends Component{
 const styles = StyleSheet.create({
     separator:{
         borderBottomColor: '#ddd',
-        borderBottomWidth: 1,
-        marginBottom: 10,
-        paddingHorizontal:20
+        borderBottomWidth: 10,
+        paddingBottom: 10,
+        paddingHorizontal:20,
+        backgroundColor:'#a93ce8',
+        borderRadius:5,
+        justifyContent:'space-between',
+        marginHorizontal:10,
+        marginTop:10,
     },
+    texto:{
+        fontWeight:600,
+        fontSize:20,
+    },
+    subtitulos:{
+        fontWeight:400,
+        fontSize:15,
+    },
+    
     
 })
 

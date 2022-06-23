@@ -59,7 +59,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#C13584',
+        backgroundColor:'#8f0fd9',
     },
     texto:{
         fontWeight:600,

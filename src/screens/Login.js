@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
         marginTop: 10,
-        backgroundColor:'#C13584',
+        backgroundColor:'#8f0fd9',
         height:730
     },
     title:{

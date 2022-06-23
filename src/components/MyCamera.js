@@ -28,6 +28,7 @@ class MyCamera extends Component{
                 })
             )
             .catch(error => console.log(error))
+            console.log(Camera);
 
     }
 

@@ -4,7 +4,8 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Image,
 } from 'react-native';
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
@@ -17,6 +18,7 @@ class Post extends Component{
            cantidadDeLikes:this.props.dataPost.data.likes.length,
            myLike:false,
         }
+        console.log(props.dataPost);
     }
 
     componentDidMount(){
@@ -59,6 +61,7 @@ class Post extends Component{
         // console.log(this.props);
         return(
                 <View style={styles.separator}>
+                    <Image source={{uri:this.props.dataPost.data.url}}style={styles.Fotos}/>
                     <Text style={styles.texto} >Post de: {this.props.dataPost.data.owner}</Text>
                     <Text  style={styles.subtitulos} >Texto del Post: {this.props.dataPost.data.description}</Text>
                      <Text style={styles.subtitulos}>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
@@ -92,6 +95,9 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         marginHorizontal:10,
         marginTop:10,
+    },
+    Fotos:{
+        height:500
     },
     texto:{
         fontWeight:600,
